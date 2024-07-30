@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-weight: bold; 
+        }
+        .delconpart1{
+            width: 100vw;
+            height: 100vh;
+            background-image: url("https://cdn.pixabay.com/photo/2015/07/17/22/43/student-849826_640.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .contpart9{
+            border: 2px solid black;
+            width: 450px;
+            height: 400px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+            flex-direction: column;
+            background-color: rgba(225, 225, 225, 1);
+        }
+        .passconpart1{
+            width: 400px;
+            height: 55px;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+        input{
+            width: 300px;
+            height: 47px;
+            border: transparent;
+            outline: transparent;
+            font-size: 17px;
+            border-bottom: 1px solid;
+            border-radius: 6px;
+            background-color: transparent;
+        }
+        .buttonpart1{
+            width: 250px;
+            height: 55px;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }  
+        button{
+            width: 70px;
+            height: 40px;
+            border-radius: 20px;
+            background-color: blue;
+            color: white;
+            border: transparent;
+        }
+    </style>
+</head>
+<body>
+    <div class="delconpart1">
+        <form action="/delete" method="post" >
+            <div class="contpart9">
+                <h1>Deleate The Student</h1>
+                <div class="passconpart1">
+                    <label for="name">name :</label>
+                    <input type="text" id="name" class="nameinpart1" name="name" placeholder="Enter the name to delete">
+                </div>
+                <h3 style="color: green;" th:text="${succese}"></h3>
+                <h3 style="color: red;" th:text="${falure}"></h3>
+                <div class="buttonpart1">
+                    <button type="reset">cancel</button>
+                    <button type="submit">submit</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
