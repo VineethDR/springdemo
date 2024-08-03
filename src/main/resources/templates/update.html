@@ -136,51 +136,51 @@
 <body>
     <div class="mainconpart5">
         <form action="/update" method="post" enctype="multipart/form-data">
-            <div class="contcomp5">
+            <div class="contcomp5" th:each="s:${stud}">
                 <input type="hidden" th:value="${id}" name="id">
                 <div class="nameconpart5">
                     <label for="name">Name :</label>
-                    <input type="text" id="name" name="name" class="nameinpart5" placeholder="Enter the Name">
+                    <input type="text" id="name" name="name" class="nameinpart5" th:value="${s.name}">
                 </div>
                 <div class="classconpart5">
                     <label for="classstd">Class :</label>
-                    <input type="text" id="classstd"name="stdclass" class="classstdpart5" placeholder="Enter the class">
+                    <input type="text" id="classstd"name="stdclass" class="classstdpart5" th:value="${s.stdclass}">
                 </div>
                 <div class="mobilecom">
                     <label for="mobile">mobile no :</label>
-                    <input type="text" id="mobile" name="mobile" class="marks1part5" placeholder="Enter the mobile no">
+                    <input type="text" id="mobile" name="mobile" class="marks1part5" th:value="${s.mobile}">
                 </div>
                 <div class="daeofberthcom">
                     <label for="dob">dob :</label>
-                    <input type="date" id="dob" name="dob" class="dateofbe" placeholder="Enter the dob">
+                    <input type="date" id="dob" name="dob" class="dateofbe" th:value="${s.dob}">
                 </div>
                 <div class="sub1conpart5">
                     <label for="marks1">Subject1 marks :</label>
-                    <input type="number" id="marks1" name="subject1marks" class="marks1part5" placeholder="Enter the subject1 marks">
+                    <input type="number" id="marks1" name="subject1marks" class="marks1part5" th:value="${s.subject1marks}">
                 </div>
                 <div class="sub2conpart5">
                     <label for="marks2">Subject2 marks :</label>
-                    <input type="number" id="marks2" name="subject2marks" class="marks2part5" placeholder="Enter the subject2 marks">
+                    <input type="number" id="marks2" name="subject2marks" class="marks2part5" th:value="${s.subject2marks}">
                 </div>
                 <div class="sub3conpart5">
                     <label for="marks3">Subject3 marks :</label>
-                    <input type="number" id="marks3" name="subject3marks" class="marks3part5" placeholder="Enter the subject3 marks">
+                    <input type="number" id="marks3" name="subject3marks" class="marks3part5" th:value="${s.subject3marks}">
                 </div>
                 <div class="sub4conpart5">
                     <label for="marks4">Subject4 marks :</label>
-                    <input type="number" id="marks4" name="subject4marks" class="marks4part5" placeholder="Enter the subject4 marks">
+                    <input type="number" id="marks4" name="subject4marks" class="marks4part5" th:value="${s.subject4marks}">
                 </div>
                 <div class="sub5conpart5">
                     <label for="marks5">Subject5 marks :</label>
-                    <input type="number" id="marks5" name="subject5marks" class="marks5part5" placeholder="Enter the subject5 marks">
+                    <input type="number" id="marks5" name="subject5marks" class="marks5part5" th:value="${s.subject5marks}">
                 </div>
                 <div class="sub6conpart5">
                     <label for="marks6">Subject6 marks :</label>
-                    <input type="number" id="marks6" name="subject6marks" class="marks6part5" placeholder="Enter the subject6 marks">
+                    <input type="number" id="marks6" name="subject6marks" class="marks6part5" th:value="${s.subject6marks}">
                 </div>
                 <div class="picher">
                     <label for="picher">picher</label>
-                    <input type="file"placeholder="Enter the picher" name="stdpicher" class="picherpart5">
+                    <input type="file" placeholder="Enter the picher agine" name="stdpicher" class="picherpart5">
                 </div>
                 <button>done</button>
             </div>

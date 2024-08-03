@@ -184,6 +184,8 @@ public class mycontroler {
     public String update(HttpSession session,ModelMap map ,@RequestParam int id) {
         if (session.getAttribute("user")!=null) {
             map.put("id", id);
+            StudentData stddata=myStudentReposetry.findById(id).orElse(null);
+            map.put("stud", stddata);
             return "update.html";
         }else{
             map.put("falureemapass", "* invalid user");
@@ -196,14 +198,7 @@ public class mycontroler {
             studentData.setPicher(addToCloudinary(stdpicher));
             myStudentReposetry.save(studentData);
             map.put("success", "data enter succesfully");
-            List<StudentData> list=myStudentReposetry.findAll();
-            if (list.isEmpty()) {
-                map.put("falure","no data found");
-                return "home.html";
-            }else{
-                map.put("list",list);
-                return "fech.html";
-            }
+            return fech(session, map);
         }else{
             map.put("falureemapass", "* invalid user");
             return "login.html";
@@ -214,23 +209,11 @@ public class mycontroler {
     @GetMapping("/delete")
     public String delete(HttpSession session,ModelMap map,@RequestParam int id) {
         if (session.getAttribute("user")!=null) {
-         StudentData std=myStudentReposetry.findById(id).orElse(null);
-          if (std==null) {
-            map.put("falure", "data not found");
-            return "fech.html";
-          }else{
-            map.put("succese", "data deleted");
             myStudentReposetry.deleteById(id);
-            List<StudentData> list=myStudentReposetry.findAll();
-            if (list.isEmpty()) {
-                map.put("falure","no data found");
-                return "home.html";
-            }else{
-                map.put("list",list);
-                return "fech.html";
-            }
+            return fech(session, map);
+            
           }
-        }else{
+        else{
             map.put("falureemapass", "* invalid user");
         return "login.html";
         }
