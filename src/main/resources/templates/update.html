@@ -4,8 +4,187 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-weight: bold; 
+        }
+        .mainconpart5{
+            width: 100vw;
+            height: 100vh;
+            background-image: url("https://cdn.pixabay.com/photo/2015/07/17/22/43/student-849826_640.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .contcomp5{
+            border: 2px solid black;
+            width: 600px;
+            height: 850px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+            flex-direction: column;
+            background-color: rgba(225, 225, 225, 1);
+        }
+        .nameconpart5{
+            width: 400px;
+            height: 55px;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+        .classconpart5{
+            width: 400px;
+            height: 55px;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+        .mobilecom{
+            width: 450px;
+            height: 55px;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+        .daeofberthcom{
+            width: 450px;
+            height: 55px;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+        .sub1conpart5{
+            width: 400px;
+            height: 55px;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+        .sub2conpart5{
+            width: 400px;
+            height: 55px;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+        .sub3conpart5{
+            width: 400px;
+            height: 55px;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+        .sub4conpart5{
+            width: 400px;
+            height: 55px;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+        .sub5conpart5{
+            width: 400px;
+            height: 55px;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+        .sub6conpart5{
+            width: 400px;
+            height: 55px;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+        .picher{
+            width: 400px;
+            height: 55px;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+        label{
+            font-size: 22px;
+        }
+        input{
+            width: 300px;
+            height: 47px;
+            border: transparent;
+            outline: transparent;
+            font-size: 17px;
+            border-bottom: 1px solid;
+            border-radius: 6px;
+            background-color: transparent;
+        }
+        button{
+            width: 70px;
+            height: 40px;
+            border-radius: 20px;
+            background-color: blue;
+            color: white;
+            border: transparent;
+        }
+    </style>
 </head>
 <body>
-    <h1>update</h1>
+    <div class="mainconpart5">
+        <form action="/update" method="post" enctype="multipart/form-data">
+            <div class="contcomp5">
+                <input type="hidden" th:value="${id}" name="id">
+                <div class="nameconpart5">
+                    <label for="name">Name :</label>
+                    <input type="text" id="name" name="name" class="nameinpart5" placeholder="Enter the Name">
+                </div>
+                <div class="classconpart5">
+                    <label for="classstd">Class :</label>
+                    <input type="text" id="classstd"name="stdclass" class="classstdpart5" placeholder="Enter the class">
+                </div>
+                <div class="mobilecom">
+                    <label for="mobile">mobile no :</label>
+                    <input type="text" id="mobile" name="mobile" class="marks1part5" placeholder="Enter the mobile no">
+                </div>
+                <div class="daeofberthcom">
+                    <label for="dob">dob :</label>
+                    <input type="date" id="dob" name="dob" class="dateofbe" placeholder="Enter the dob">
+                </div>
+                <div class="sub1conpart5">
+                    <label for="marks1">Subject1 marks :</label>
+                    <input type="number" id="marks1" name="subject1marks" class="marks1part5" placeholder="Enter the subject1 marks">
+                </div>
+                <div class="sub2conpart5">
+                    <label for="marks2">Subject2 marks :</label>
+                    <input type="number" id="marks2" name="subject2marks" class="marks2part5" placeholder="Enter the subject2 marks">
+                </div>
+                <div class="sub3conpart5">
+                    <label for="marks3">Subject3 marks :</label>
+                    <input type="number" id="marks3" name="subject3marks" class="marks3part5" placeholder="Enter the subject3 marks">
+                </div>
+                <div class="sub4conpart5">
+                    <label for="marks4">Subject4 marks :</label>
+                    <input type="number" id="marks4" name="subject4marks" class="marks4part5" placeholder="Enter the subject4 marks">
+                </div>
+                <div class="sub5conpart5">
+                    <label for="marks5">Subject5 marks :</label>
+                    <input type="number" id="marks5" name="subject5marks" class="marks5part5" placeholder="Enter the subject5 marks">
+                </div>
+                <div class="sub6conpart5">
+                    <label for="marks6">Subject6 marks :</label>
+                    <input type="number" id="marks6" name="subject6marks" class="marks6part5" placeholder="Enter the subject6 marks">
+                </div>
+                <div class="picher">
+                    <label for="picher">picher</label>
+                    <input type="file"placeholder="Enter the picher" name="stdpicher" class="picherpart5">
+                </div>
+                <button>done</button>
+            </div>
+        </form>
+    </div>
 </body>
 </html>

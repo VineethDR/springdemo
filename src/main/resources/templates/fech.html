@@ -6,19 +6,43 @@
     <title>Document</title>
 </head>
 <body>
-    <div class="mainconpart6">
-        <div class="stdcon1">
-
-        </div>
-        <div class="stdcon2">
-
-        </div>
-        <div class="stdcon3">
-
-        </div>
-        <div class="stdcon4">
-            
-        </div>
+    <div>
+        <h3 style="color: red;" th:text="${falure}"></h3>
+        <h3 style="color: green;" th:text="${succese}"></h3>
+        <table border="2px solid black">
+            <tr>
+                <th>Name</th>
+                <th>picture</th>
+                <th>mobile</th>
+                <th>dob</th>
+                <th>standerd</th>
+                <th>subjectmarks1</th>
+                <th>subjectmarks2</th>
+                <th>subjectmarks3</th>
+                <th>subjectmarks4</th>
+                <th>subjectmarks5</th>
+                <th>subjectmarks6</th>
+                <th>persentage</th>
+                <th>edit</th>
+                <th>delete</th>
+            </tr>
+            <tr th:each="s:${list}">
+                <td th:text="${s.name}"></td>
+                <td><img th:src="${s.picher}" alt="" height="100px" width="100px"></td>
+                <td th:text="${s.mobile}"></td>
+                <td th:text="${s.dob}"></td>
+                <td th:text="${s.stdclass}"></td>
+                <td th:text="${s.subject1marks}"></td>
+                <td th:text="${s.subject2marks}"></td>
+                <td th:text="${s.subject3marks}"></td>
+                <td th:text="${s.subject4marks}"></td>
+                <td th:text="${s.subject5marks}"></td>
+                <td th:text="${s.subject6marks}"></td>
+                <td th:text="${(s.subject1marks+s.subject2marks+s.subject3marks+s.subject4marks+s.subject5marks+s.subject6marks)/6.0}"></td>
+                <td><a th:href="'update?id='+${s.id}"><button>edit</button></a></td>
+                <td><a th:href="'delete?id='+${s.id}"><button>delete</button></a></td>
+            </tr>
+        </table>
     </div>
 </body>
 </html>

@@ -20,11 +20,11 @@ private String name;
 private String stdclass;
 private String mobile;
 private LocalDate dob;
-private double subject1marks;
-private double subject2marks;
-private double subject3marks;
-private double subject4marks;
-private double subject5marks;
-private double subject6marks;
+private int subject1marks;
+private int subject2marks;
+private int subject3marks;
+private int subject4marks;
+private int subject5marks;
+private int subject6marks;
 private String picher;
 }

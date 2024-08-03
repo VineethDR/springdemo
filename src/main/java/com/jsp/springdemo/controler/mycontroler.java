@@ -2,7 +2,9 @@ package com.jsp.springdemo.controler;
 
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +27,8 @@ import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.bind.annotation.RequestBody;
+
 
 
 
@@ -141,13 +145,12 @@ public class mycontroler {
             return "home.html";
         }else{
             map.put("falureemapass", "* invalid user");
-        return "login.html";
+            return "login.html";
         }
     }
     public String addToCloudinary(MultipartFile image) {
 		Cloudinary cloudinary = new Cloudinary(ObjectUtils.asMap("cloud_name", "dlwsojb20", "api_key",
 				"946261358726857", "api_secret", "Yoi-AYk377aPh88hsEyOV8awM88", "secure", true));
-
 		Map resume = null;
 		try {
 			Map<String, Object> uploadOptions = new HashMap<String, Object>();
@@ -163,7 +166,14 @@ public class mycontroler {
     @GetMapping("/fetch")
     public String fech(HttpSession session,ModelMap map) {
         if (session.getAttribute("user")!=null) {
-            return "fech.html";
+            List<StudentData> list=myStudentReposetry.findAll();
+            if (list.isEmpty()) {
+                map.put("falure","no data found");
+                return "home.html";
+            }else{
+                map.put("list",list);
+                return "fech.html";
+            }
         }else{
             map.put("falureemapass", "* invalid user");
         return "login.html";
@@ -171,19 +181,55 @@ public class mycontroler {
     }
 
     @GetMapping("/update")
-    public String update(HttpSession session,ModelMap map) {
+    public String update(HttpSession session,ModelMap map ,@RequestParam int id) {
         if (session.getAttribute("user")!=null) {
+            map.put("id", id);
             return "update.html";
         }else{
             map.put("falureemapass", "* invalid user");
         return "login.html";
         }
     }
+    @PostMapping("/update")
+    public String updatedetals(StudentData studentData,HttpSession session,ModelMap map,@RequestParam MultipartFile stdpicher) {
+        if (session.getAttribute("user")!=null) {
+            studentData.setPicher(addToCloudinary(stdpicher));
+            myStudentReposetry.save(studentData);
+            map.put("success", "data enter succesfully");
+            List<StudentData> list=myStudentReposetry.findAll();
+            if (list.isEmpty()) {
+                map.put("falure","no data found");
+                return "home.html";
+            }else{
+                map.put("list",list);
+                return "fech.html";
+            }
+        }else{
+            map.put("falureemapass", "* invalid user");
+            return "login.html";
+        }
+    }
+    
 
     @GetMapping("/delete")
-    public String delete(HttpSession session,ModelMap map) {
+    public String delete(HttpSession session,ModelMap map,@RequestParam int id) {
         if (session.getAttribute("user")!=null) {
-            return "delete.html";
+         StudentData std=myStudentReposetry.findById(id).orElse(null);
+          if (std==null) {
+            map.put("falure", "data not found");
+            return "fech.html";
+          }else{
+            map.put("succese", "data deleted");
+            myStudentReposetry.deleteById(id);
+            List<StudentData> list=myStudentReposetry.findAll();
+            if (list.isEmpty()) {
+                map.put("falure","no data found");
+                return "home.html";
+            }else{
+                map.put("list",list);
+                return "fech.html";
+            }
+          }
         }else{
             map.put("falureemapass", "* invalid user");
         return "login.html";
